@@ -5,16 +5,27 @@ const MockFollowersList = () => {
   return <BrowserRouter><FollowersList/></BrowserRouter>
 }
 describe('Testing the Followerd List ',()=>{
-    test('should render the FollowerList ', async () => {
-        render(<MockFollowersList />);
-        const followerDivElement = await screen.findByTestId('follower-item-0'); 
-        expect(followerDivElement).toBeInTheDocument();
-      });
-      test('should render all 5 items ', async () => {
-        render(<MockFollowersList />);
-        const followerDivElement = await screen.findAllByTestId(/follower-item/i);
-        expect(followerDivElement.length).toEqual(5);
-      });
+  beforeEach(() => {
+    jest.mock("../../../__mocks__/axios")
+})
+
+it('should fetch and render input element', async () => {
+    render(
+        <MockFollowersList />
+    );
+    const followerDivElement = await screen.findByTestId(`follower-item-0`)
+    expect(followerDivElement).toBeInTheDocument();
+});
+
+it('should fetch and render input element', async () => {
+    render(
+        <MockFollowersList />
+    );
+
+    const followerDivElement = await screen.findByTestId(`follower-item-0`)
+    screen.debug()
+    expect(followerDivElement).toBeInTheDocument();
+});
    
         
 })

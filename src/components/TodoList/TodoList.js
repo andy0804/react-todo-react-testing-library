@@ -33,6 +33,7 @@ function TodoList({
                     {
                         todos.map((todo, index) => (
                             <div 
+                                data-test="to-do-listitem"
                                 data-testid="tasks-container"
                                 className={`todo-item ${todo.completed && "todo-item-active"}`} 
                                 onClick={() => updateTask(todo.id)}

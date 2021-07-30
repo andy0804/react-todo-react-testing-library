@@ -21,10 +21,18 @@ function AddInput({
         setTodos(updatedTodos);
         setTodo("")
     }
+    const handleKeyDown =(event) =>{
+        if(event.keyCode === 13) { 
+            console.log('Enter key pressed')
+            addTodo();
+      }
 
+    }
     return (
         <div className="input-container">
-            <input 
+            <input
+               onKeyDown={handleKeyDown} 
+                data-test='new-todo'
                 className="input" 
                 value={todo} 
                 onChange={(e) => setTodo(e.target.value)}
